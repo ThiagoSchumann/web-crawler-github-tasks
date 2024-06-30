@@ -48,8 +48,8 @@ This project automates the process of creating tasks on GitHub Projects using Se
 1. **Clone the repository:**
     
     ```bash
-    git clone [repository-url]
-    cd [project-root]
+    git clone https://github.com/ThiagoSchumann/web-crawler-github-tasks
+    cd web-crawler-github-tasks
     ```
     
 2. **Install the required packages:**

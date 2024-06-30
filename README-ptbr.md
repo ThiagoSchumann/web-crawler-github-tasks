@@ -34,8 +34,8 @@ Este projeto automatiza o processo de criação de tarefas nos Projetos do GitHu
 1. **Clone o repositório:**
     
     ```bash
-    git clone [repository-url]
-    cd [project-root]
+    git clone https://github.com/ThiagoSchumann/web-crawler-github-tasks
+    cd web-crawler-github-tasks
     ```
     
 2. **Instale os pacotes necessários:**
