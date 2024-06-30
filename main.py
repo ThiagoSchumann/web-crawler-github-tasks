@@ -1,31 +1,19 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-import time
+# Caminho: ./project/main.py
 
-# Caminho para o ChromeDriver no Windows
-driver_path = "C:\\Projects\\web-crawler-github-tasks\\driver\\chromedriver.exe"
+from config import EMAIL, PASSWORD
+from data.cards import CARDS
+from services.selenium_service import get_driver, SeleniumService
 
-# Inicializar o WebDriver do Selenium
-driver = webdriver.Chrome(service=Service(executable_path=driver_path))
 
-try:
-    # Abrir uma página web
-    driver.get("http://www.google.com")
+def main():
+    with get_driver() as driver:
+        selenium_service = SeleniumService(driver)
+        selenium_service.login(EMAIL, PASSWORD)
+        selenium_service.open_project_page()
 
-    # Esperar um momento para garantir que a página esteja carregada
-    time.sleep(2)
+        for card in CARDS:
+            selenium_service.add_card(card)
 
-    # Localizar um elemento na página (por exemplo, a barra de pesquisa do Google)
-    search_box = driver.find_element(By.NAME, 'q')
 
-    # Interagir com o elemento (por exemplo, enviar uma pesquisa)
-    search_box.send_keys('Thiago Artur Schumann' + Keys.RETURN)
-
-    # Esperar um momento para ver o resultado
-    time.sleep(5)
-
-finally:
-    # Fechar o navegador ao finalizar, mesmo se ocorrer um erro
-    driver.quit()
+if __name__ == "__main__":
+    main()
